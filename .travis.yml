@@ -1,0 +1,9 @@
+os: osx 
+osx_image: xcode10
+language: objective-c
+matrix:
+  include:
+    - env: NAME=iOS DESTINATION="platform=iOS Simulator,name=iPhone 8"
+    - env: NAME=macOS DESTINATION="platform=macOS"
+script:
+  - xcodebuild ${ACTION:-test} -workspace NumberLink.xcworkspace -scheme NumberLink-${NAME} -destination "${DESTINATION}"
